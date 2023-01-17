@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+ import './App.css';
+import { history } from './helpers/history';
+import React, { Component } from 'react';
+import {  Route, Switch ,Router} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Dashboard = React.lazy(() => import('./containers/DashboardLayout'));
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    history.listen(() => {
+      // this.props.clearAlerts()
+    })
+  }
+  render() {
+    return (
+    
+      <Router  history={history}>
+          <React.Suspense >
+          <Switch>              
+            <Route  path="/" name="Home" render={props => <Dashboard {...props} />} />
+         
+          </Switch>
+        </React.Suspense>
+      </Router>
+    )
+  }
 }
 
 export default App;

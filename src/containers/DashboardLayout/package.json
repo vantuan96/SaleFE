@@ -1,0 +1,6 @@
+{
+    "name": "DashboardLayout",
+    "version": "1.0.0",
+    "private": true,
+    "main": "./DashboardLayout.js"
+  }
