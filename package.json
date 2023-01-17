@@ -29,6 +29,8 @@
     "d3-interpolate": "^3.0.1",
     "html-react-parser": "^3.0.4",
     "i18next": "^22.4.9",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.1.1",
     "jquery": "^3.6.1",
     "jquery-colorbox": "^1.6.4",
     "moment": "^2.29.4",

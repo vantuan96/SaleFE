@@ -3,6 +3,9 @@
 import { history } from './helpers/history';
 import React, { Component } from 'react';
 import {  Route, Switch ,Router} from 'react-router-dom';
+import i18n from './i18n'
+import { withTranslation } from 'react-i18next';
+
 
 const Dashboard = React.lazy(() => import('./containers/DashboardLayout'));
 
@@ -14,9 +17,20 @@ class App extends Component {
     })
   }
   render() {
+    // const { t, i18n } = this.props;
+
+    // const changeLanguage = (lng) => {
+    //   i18n.changeLanguage(lng);
+    // }
+
     return (
-    
-      <Router  history={history}>
+    <>
+    {/* <div className="App-header">
+    <h1>{t('title')}</h1>
+          <button onClick={() => changeLanguage('vn')}>vn</button>
+          <button onClick={() => changeLanguage('en')}>en</button>
+        </div> */}
+        <Router  history={history}>
           <React.Suspense >
           <Switch>              
             <Route  path="/" name="Home" render={props => <Dashboard {...props} />} />
@@ -24,8 +38,10 @@ class App extends Component {
           </Switch>
         </React.Suspense>
       </Router>
+    </>
+    
     )
   }
 }
 
-export default App;
+export default withTranslation()(App);

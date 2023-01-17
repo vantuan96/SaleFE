@@ -3,6 +3,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import * as Constants from "../../common/Constants";
 import { getCollapseUtilityClass } from '@mui/material';
+import i18n from '../../i18n'
 const styles = {
     display: "none"
 }
@@ -76,6 +77,13 @@ const Topbar = (props) => {
         return body
 
     }
+    // const { t, i18n } = props;
+
+    const changeLanguage = (lng) => {
+        localStorage.setItem('locale', lng)
+        i18n.locale = locale
+        // this.locale = locale
+    }
     return (
         <>
             <header className='shopee-top container-wrapper border-bottom' >
@@ -100,8 +108,8 @@ const Topbar = (props) => {
                                             {/* <span class="arrow-up1"></span> */}
                                             <div class="dropdown-content">
                                             <ul >
-                                                <li className='mf-20 pb-20'><a className='textJsk'>Tiếng việt</a></li>
-                                                <li className='mf-20'><a className='textJsk'>English</a></li>
+                                                <li className='mf-20 pb-20 textJsk' onClick={() => changeLanguage('vn')}>Tiếng việt</li>
+                                                <li className='mf-20 textJsk'  onClick={() => changeLanguage('en')}>English</li>
                                             </ul>
                                                
                                             </div>
@@ -123,7 +131,7 @@ const Topbar = (props) => {
                         <div className="d-inline-flex align-items-center">
                             <i className="bi bi-geo-alt fs-1 text-primary me-3"></i>
                             <div className="text-start">
-                                <h6 className="text-uppercase mb-1">Our Office</h6>
+                                <h6 className="text-uppercase mb-1"> Our Office</h6>
                                 <span>{props.WebInfo.Adress}</span>
                             </div>
                         </div>
@@ -132,7 +140,7 @@ const Topbar = (props) => {
                         <div className="d-inline-flex align-items-center">
                             <i className="bi bi-envelope-open fs-1 text-primary me-3"></i>
                             <div className="text-start">
-                                <h6 className="text-uppercase mb-1">Email Us</h6>
+                                <h6 className="text-uppercase mb-1"> </h6>
                                 <span>{props.WebInfo.EmailSystem}</span>
                             </div>
                         </div>
